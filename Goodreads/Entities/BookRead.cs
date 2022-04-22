@@ -1,9 +1,16 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Goodreads.Entities;
 
 public class BookRead
 {
+    [ForeignKey(nameof(Profile))]
+    public string ProfileName { get; set; }
+    
+    [ForeignKey(nameof(Book))]
+    public int BookId { get; set; }
+    
     public int? Rating { get; set; }
     
     public DateOnly? DateStarted { get; set; }

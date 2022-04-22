@@ -9,5 +9,5 @@ public class Announcement
     public int Id { get; set; }
     public string Content { get; set; }
     public DateTime TimeStamp { get; set; }
-    public ICollection<Profile> LikedBy { get; set; }
+    public ICollection<Profile> LikedByProfiles { get; set; }
 }

@@ -6,7 +6,9 @@ public class Genre
 {
     [Key]
     public int Id { get; set; }
-    [Required]
+    
+    [Required, MaxLength(50)]
     public string GenreName { get; set; }
+    
     public ICollection<Book> DescribedBooks { get; set; }
 }

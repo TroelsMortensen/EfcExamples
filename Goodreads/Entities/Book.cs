@@ -1,14 +1,21 @@
-﻿namespace Goodreads.Entities;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Goodreads.Entities;
 
 public class Book
 {
     // Defined by OnModelCreating
-    
+    [Key]    
     public int Id { get; set; }
+    [Required, StringLength(13)]
     public string Isbn { get; set; }
+    [Required, MaxLength(50)]
     public string Title { get; set; }
-    public int PageCount { get; set; }
-    public short YearPublished { get; set; }
+    [Range(0, 9999)]
+    public int? PageCount { get; set; }
+    [Range(1500, 9999)]
+    public short? YearPublished { get; set; }
+    
     public BookBinding Binding { get; set; }
     public ICollection<Genre> Genres { get; set; }
     public Author WrittenBy { get; set; }
