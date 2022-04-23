@@ -10,6 +10,8 @@ public class Author
     [Required, MaxLength(100)]
     public string FirstName { get; set; }
 
+    public string? MiddleNames { get; set; }
+
     [Required, MaxLength(100)]
     public string LastName { get; set; }
     

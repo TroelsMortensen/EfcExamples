@@ -20,18 +20,18 @@ public class GoodreadsContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlite("Data Source = Goodreads.db");
+        optionsBuilder.UseSqlite(@"Data Source = C:\TRMO\RiderProjects\EfcExamples\Goodreads\Goodreads.db");
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         SetupAnnouncements(modelBuilder);
-        SetupAuthor(modelBuilder);
+        // SetupAuthor(modelBuilder);
         SetupBook(modelBuilder);
         SetupCity(modelBuilder);
         SetupCurrentlyReading(modelBuilder);
-        SetupGenre(modelBuilder);
-        SetupProfile(modelBuilder);
+        // SetupGenre(modelBuilder);
+        // SetupProfile(modelBuilder);
         SetupPublisher(modelBuilder);
         SetupWantsToRead(modelBuilder);
         SetupBooksRead(modelBuilder);
@@ -39,17 +39,22 @@ public class GoodreadsContext : DbContext
 
     private void SetupWantsToRead(ModelBuilder modelBuilder)
     {
+        // Defining composite primary key. This can be done with Data Annotation attributes too.
         modelBuilder.Entity<WantsToRead>().HasKey(x => new { x.BookId, x.ProfileName });
     }
 
     private void SetupBooksRead(ModelBuilder modelBuilder)
     {
+        // Defining composite primary key. This can be done with Data Annotation attributes too.
         modelBuilder.Entity<BookRead>().HasKey(x => new { x.BookId, x.ProfileName });
     }
 
     private void SetupPublisher(ModelBuilder modelBuilder)
     {
-        // Probably nothing to do here
+        modelBuilder.Entity<Publisher>()
+            .HasOne(p => p.Address)
+            .WithOne(a => a.Publisher)
+            .HasForeignKey<Address>(a => a.PublisherId);
     }
 
     private void SetupProfile(ModelBuilder modelBuilder)
@@ -64,16 +69,19 @@ public class GoodreadsContext : DbContext
 
     private void SetupCurrentlyReading(ModelBuilder modelBuilder)
     {
+        // Defining composite primary key. This can be done with Data Annotation attributes too.
         modelBuilder.Entity<CurrentlyReading>().HasKey(x => new { x.BookId, x.ProfileName });
     }
 
     private void SetupCity(ModelBuilder modelBuilder)
     {
+        // Defining composite primary key. This can be done with Data Annotation attributes too.
         modelBuilder.Entity<City>().HasKey(x => new { x.Name, x.PostCode });
     }
 
     private void SetupBook(ModelBuilder modelBuilder)
     {
+        // I need this explicitly because I have two relationships between Book and Author.
         modelBuilder.Entity<Book>(entity =>
         {
             entity.HasOne(book => book.WrittenBy)
@@ -82,8 +90,8 @@ public class GoodreadsContext : DbContext
             entity.HasMany(book => book.CoAuthors)
                 .WithMany(author => author.BooksCoAuthored);
 
-            entity.HasKey(b => b.Id);
-            entity.HasIndex(b => b.Isbn).IsUnique();
+            entity.HasKey(b => b.Id); // defining the primary key here, could just have used [Key] in Book
+            entity.HasIndex(b => b.Isbn).IsUnique(); // adding unique constraint to ISBN number
         });
     }
 
@@ -94,10 +102,11 @@ public class GoodreadsContext : DbContext
 
     private void SetupAnnouncements(ModelBuilder modelBuilder)
     {
+        // I don't strictly need this, but I want to name the table other than the default AnnouncementsProfile or whatever.
         modelBuilder.Entity<Announcement>()
             .HasMany(x => x.LikedByProfiles)
             .WithMany(x => x.AnnouncementsLiked)
             .UsingEntity(j => j.ToTable("AnnouncementLikes"));
-        // should be done automatically
+        
     }
 }

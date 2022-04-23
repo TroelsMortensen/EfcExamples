@@ -6,6 +6,9 @@ public class Address
 {
     [Key] 
     public int Id { get; set; }
+
+    public Publisher Publisher { get; set; }
+    public int PublisherId { get; set; }
     
     [Required]
     public City City { get; set; }
