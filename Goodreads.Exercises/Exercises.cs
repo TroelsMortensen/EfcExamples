@@ -141,17 +141,19 @@ public class Exercises
 
     [Test]
     public virtual void Ex14()
-    { // Show an overview of author id and how many books they have written. Order by highest count at the top.
+    { // Show an overview of author first name and last name and how many books they have written.
+      // Order by highest count at the top.
     }
 
     [Test]
     public virtual void Ex15()
-    { // What is the highest page count?
+    { 
+        // What is the title of the book with the highest page count?
     }
 
     [Test]
     public virtual void Ex16()
-    { // What is the title of the book with the highest page count?
+    { // What is the title of the book with the fifth highest page count?
     }
 
     [Test]
@@ -306,7 +308,7 @@ public class Exercises
 
     [Test]
     public virtual void Ex47()
-    {
+    { // Show titles of all books written by Brandon Sanderson
     }
 
     [Test]

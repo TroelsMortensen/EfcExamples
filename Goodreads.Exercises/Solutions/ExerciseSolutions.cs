@@ -152,37 +152,75 @@ public class ExerciseSolutions : Exercises
     [Test]
     public override void Ex13()
     {
-        base.Ex13();
+        var count = context.Authors.Count(a => a.MiddleNames != null);
+        Print(count);
     }
 
     [Test]
     public override void Ex14()
     {
-        base.Ex14();
+        var result = context.Authors
+            .Include(a => a.BooksAuthored)
+            .Select(a => new
+            {
+                Name = a.FirstName + " " + a.LastName,
+                BookCount = a.BooksAuthored.Count
+            })
+            .OrderByDescending(arg => arg.BookCount)
+            .ToList();
+
+        Print(result);
     }
 
     [Test]
     public override void Ex15()
     {
-        base.Ex15();
+        var result = context.Books.OrderByDescending(b => b.PageCount)
+            .Select(book => new
+            {
+                Title = book.Title,
+                Pages = book.PageCount
+            })
+            .Take(1)
+            .ToList();
+        Print(result);
     }
 
     [Test]
     public override void Ex16()
     {
-        base.Ex16();
+        var result = context.Books.OrderByDescending(b => b.PageCount)
+            .Select(book => new
+            {
+                Title = book.Title,
+                Pages = book.PageCount
+            })
+            .Skip(4)
+            .Take(1)
+            .ToList();
+        Print(result);
     }
 
     [Test]
     public override void Ex17()
     {
-        base.Ex17();
+        var result = context.Profiles
+            .Include(p => p.BooksRead)
+            .First(p => p.ProfileName.Equals("Venom_Fate"))
+            .BooksRead
+            .Count;
+        Print(result);
     }
 
     [Test]
     public override void Ex18()
     {
-        base.Ex18();
+        var result = context.Authors
+            .Include(a => a.BooksAuthored)
+            .First(a => a.FirstName.Equals("Brandon") && a.LastName.Equals("Sanderson"))
+            .BooksAuthored
+            .Count;
+        Print(result);
     }
 
     [Test]
