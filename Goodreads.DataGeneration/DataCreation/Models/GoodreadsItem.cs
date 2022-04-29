@@ -1,4 +1,6 @@
-﻿namespace GoodreadsDataGeneration.DataCreation.Models;
+﻿using System.Collections.Generic;
+
+namespace GoodreadsDataGeneration.DataCreation.Models;
 
 public class GoodreadsItem
 {

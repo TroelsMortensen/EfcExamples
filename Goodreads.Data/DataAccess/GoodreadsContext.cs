@@ -1,4 +1,5 @@
-﻿using Goodreads.Entities;
+﻿using System;
+using Goodreads.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Goodreads.DataAccess;

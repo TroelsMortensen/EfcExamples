@@ -1,4 +1,6 @@
-﻿namespace GoodreadsDataGeneration.DataCreation.Models;
+﻿using System;
+
+namespace GoodreadsDataGeneration.DataCreation.Models;
 
 public class BookToReadData
 {

@@ -5,7 +5,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <RootNamespace>GoodreadsDataGeneration</RootNamespace>
+        <RootNamespace>Goodreads.DataGeneration</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

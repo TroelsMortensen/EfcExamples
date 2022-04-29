@@ -1,4 +1,6 @@
-﻿namespace GoodreadsDataGeneration.DataCreation.Generators;
+﻿using System;
+
+namespace GoodreadsDataGeneration.DataCreation.Generators;
 
 public static class RandomStringGenerator
 {
