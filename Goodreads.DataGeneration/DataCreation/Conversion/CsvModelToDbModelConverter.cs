@@ -90,7 +90,7 @@ public class CsvModelToDbModelConverter
                 // MyRating = item.MyRating == 0 ? null : item.MyRating,
                 PageCount = item.PageCount,
                 YearPublished = item.YearPublished,
-                ISBN = item.ISBN,
+                ISBN = "".Equals(item.ISBN) ? null : item.ISBN,
                 BindingId = bindingId,
                 PublisherId = publisherId, //.Replace("'","''"),
                 

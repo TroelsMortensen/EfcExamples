@@ -145,7 +145,7 @@ public class ExerciseSolutions : Exercises
     [Test]
     public override void Ex12()
     {
-        var count = context.Books.Count(b => b.Isbn == "");
+        var count = context.Books.Count(b => b.Isbn == null);
         Print(count);
     }
 
