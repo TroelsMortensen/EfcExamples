@@ -1,10 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goodreads", "Goodreads\Goodreads.csproj", "{8E5398D1-ED93-4F00-BAEB-E6B1EACC6778}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goodreads.Data", "Goodreads.Data\Goodreads.Data.csproj", "{8E5398D1-ED93-4F00-BAEB-E6B1EACC6778}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodreadsDataGeneration", "GoodreadsDataGeneration\GoodreadsDataGeneration.csproj", "{7C1F6649-69DD-436F-9369-149AC958146A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goodreads.DataGeneration", "Goodreads.DataGeneration\Goodreads.DataGeneration.csproj", "{7C1F6649-69DD-436F-9369-149AC958146A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoodreadsExampleUsage", "GoodreadsExampleUsage\GoodreadsExampleUsage.csproj", "{7144B9EE-86F8-4461-B07B-35DA5EFCC67D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goodreads.ExampleUsage", "Goodreads.ExampleUsage\Goodreads.ExampleUsage.csproj", "{7144B9EE-86F8-4461-B07B-35DA5EFCC67D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Goodreads.Exercises", "Goodreads.Exercises\Goodreads.Exercises.csproj", "{765D50DD-691A-47AD-9C0D-7275662989A7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Goodreads", "Goodreads", "{7D8A09BE-74D7-4867-A91F-C1DE0BD6DF0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +28,15 @@ Global
 		{7144B9EE-86F8-4461-B07B-35DA5EFCC67D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7144B9EE-86F8-4461-B07B-35DA5EFCC67D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7144B9EE-86F8-4461-B07B-35DA5EFCC67D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{765D50DD-691A-47AD-9C0D-7275662989A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{765D50DD-691A-47AD-9C0D-7275662989A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{765D50DD-691A-47AD-9C0D-7275662989A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{765D50DD-691A-47AD-9C0D-7275662989A7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8E5398D1-ED93-4F00-BAEB-E6B1EACC6778} = {7D8A09BE-74D7-4867-A91F-C1DE0BD6DF0D}
+		{7C1F6649-69DD-436F-9369-149AC958146A} = {7D8A09BE-74D7-4867-A91F-C1DE0BD6DF0D}
+		{7144B9EE-86F8-4461-B07B-35DA5EFCC67D} = {7D8A09BE-74D7-4867-A91F-C1DE0BD6DF0D}
+		{765D50DD-691A-47AD-9C0D-7275662989A7} = {7D8A09BE-74D7-4867-A91F-C1DE0BD6DF0D}
 	EndGlobalSection
 EndGlobal
