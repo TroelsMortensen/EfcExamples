@@ -11,4 +11,6 @@ public class Announcement
     public string Title { get; set; }
     public DateTime TimeStamp { get; set; }
     public ICollection<Profile> LikedByProfiles { get; set; }
+
+    public Author WrittenBy { get; set; }
 }

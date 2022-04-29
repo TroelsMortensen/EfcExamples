@@ -2,13 +2,15 @@
 
 public class DataBaseModelContainer
 {
-    public List<Author> Authors { get; set; }
-    public List<Book> Books { get; set; }
-    public List<Publisher> Publishers { get; set; }
-    public List<Binding> Bindings { get; set; }
-    public List<Profile> Users { get; set; }
-    public List<BookRead> UsersHaveRead { get; set; }
-    public List<BookToRead> UsersWantToRead { get; set; }
-    public List<CurrentlyReadingBook> CurrentlyReadingBooks { get; set; }
-    public List<GenreContainer> Genres { get; set; }
+    public List<AuthorData> Authors { get; set; }
+    public List<BookData> Books { get; set; }
+    public List<PublisherData> Publishers { get; set; }
+    public List<BindingData> Bindings { get; set; }
+    public List<ProfileData> Users { get; set; }
+    public List<BookReadData> UsersHaveRead { get; set; }
+    public List<BookToReadData> UsersWantToRead { get; set; }
+    public List<CurrentlyReadingBookData> CurrentlyReadingBooks { get; set; }
+    public List<GenreData> Genres { get; set; }
+    public List<AnnouncementLikeData> AnnouncementLikes { get; set; }
+    public List<AnnouncementData> Announcements { get; set; }
 }

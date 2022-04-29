@@ -15,6 +15,15 @@ public class AddObjects
         // await DeleteBrandonAsync();
         // await AddBook();
         // await AddBookToExistingAsync();
+        await GroupBy();
+    }
+
+    private async Task GroupBy()
+    {
+        await using GoodreadsContext context = new();
+        
+        
+        
     }
 
     private async Task AddBookToExistingAsync()
@@ -66,13 +75,18 @@ public class AddObjects
         await context.SaveChangesAsync();
     }
 
+    private async Task OtherUpdate(Author author)
+    {
+        await using GoodreadsContext context = new();
+        context.Authors.Update(author);
+    }
+
     private async Task AddAuthorAsync()
     {
         Author brandon = new()
         {
             FirstName = "Brandon",
             LastName = "Sanderson",
-            About = "Bla bla..",
             Email = "brandon.sanderson@gmail.com",
             Website = "www.brandonsanderson.com/",
         };

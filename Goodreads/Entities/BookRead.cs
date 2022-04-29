@@ -18,7 +18,7 @@ public class BookRead
     public DateOnly? DateFinished { get; set; }
     
     [MaxLength(500)]
-    public string Review { get; set; }
+    public string? Review { get; set; }
 
     // nav prop
     public Profile Profile { get; set; }

@@ -21,6 +21,7 @@ public class GoodreadsContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlite(@"Data Source = C:\TRMO\RiderProjects\EfcExamples\Goodreads\Goodreads.db");
+        optionsBuilder.EnableSensitiveDataLogging();
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -91,7 +92,6 @@ public class GoodreadsContext : DbContext
                 .WithMany(author => author.BooksCoAuthored);
 
             entity.HasKey(b => b.Id); // defining the primary key here, could just have used [Key] in Book
-            entity.HasIndex(b => b.Isbn).IsUnique(); // adding unique constraint to ISBN number
         });
     }
 

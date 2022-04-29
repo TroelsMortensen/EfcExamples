@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using System.Text;
+using System.Text.Json;
 using GoodreadsDataGeneration.DataCreation.Models;
 
 namespace GoodreadsDataGeneration.DataCreation.CsvImport;
@@ -11,7 +12,7 @@ public class GenreImporter
     /**
          * Reads genres from a file. Then for each book, the genres are attached.
          */
-    public static void AddGenres(List<Book> books, DataBaseModelContainer container)
+    public static void AddGenres(List<BookData> books, DataBaseModelContainer container)
     {
         Dictionary<string, int> genres = CollectAllGenres();
 
@@ -21,30 +22,25 @@ public class GenreImporter
         while ((line = reader.ReadLine()) != null)
         {
             var strings = line.Split(",");
-            Book book = books.First(b => b.BookId.Equals(strings[0]));
+            BookData bookData = books.First(b => b.BookId.Equals(strings[0]));
             for (int i = 1; i < strings.Length; i++)
             {
-                book.GenreIds.Add(genres[strings[i]]);
+                bookData.GenreIds.Add(genres[strings[i]]);
             }
         }
 
         AddGenreContainers(container, genres);
-        ValidateAllBooksHaveGenres(container);
     }
 
-    private static void ValidateAllBooksHaveGenres(DataBaseModelContainer container)
-    {
-        IEnumerable<Book> booksWithoutGenres = container.Books.Where(b => !b.GenreIds.Any());
-        if (booksWithoutGenres.Any()) throw new Exception("Not all books have genre");
-    }
+
 
     private static void AddGenreContainers(DataBaseModelContainer container, Dictionary<string, int> genres)
     {
-        List<GenreContainer> list = new();
+        List<GenreData> list = new();
         foreach (string key in genres.Keys)
         {
             int genreId = genres[key];
-            list.Add(new GenreContainer
+            list.Add(new GenreData
             {
                 Genre = key,
                 Id = genreId
@@ -124,10 +120,10 @@ public class GenreImporter
         return genres;
     }
 
-    public void StoreBookIds(List<Book> containerBooks)
+    public void StoreBookIds(List<BookData> containerBooks)
     {
         using StreamWriter file = new StreamWriter(@"C:\TRMO\RiderProjects\DbsData\Goodreads\Books.txt");
-        foreach (Book book in containerBooks)
+        foreach (BookData book in containerBooks)
         {
             file.WriteLine(book.BookId);
         }

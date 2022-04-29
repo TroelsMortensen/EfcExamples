@@ -3,16 +3,23 @@
 public static class RandomStringGenerator
 {
     public static Random rand = new();
-    public static string GetRandomString(int maxLength)
+    public static string GetRandomString(int maxLength, bool withDots = false)
     {
         int length = rand.Next(maxLength / 3, maxLength);
         int startIdx = rand.Next(0, lorumIpsum.Length - length);
         string substring = lorumIpsum.Substring(startIdx, length);
 
         string result = string.Concat(substring[0].ToString().ToUpper(), substring.AsSpan(1));
+        
         if (!result[^1].Equals('.'))
         {
-            result += ".";
+            if(withDots)
+                result += "...";
+            
+        }
+        else if (withDots)
+        {
+            result += "..";
         }
         
         return result;

@@ -16,16 +16,15 @@ public class Author
     public string LastName { get; set; }
     
     [EmailAddress]
-    public string Email { get; set; }
-    
-    [MaxLength(500)]
-    public string About { get; set; }
+    public string? Email { get; set; }
     
     [Url]
-    public string Website { get; set; }
+    public string? Website { get; set; }
     
     // nav props
     public ICollection<Book> BooksAuthored { get; set; }
     public ICollection<Book> BooksCoAuthored { get; set; }
+
+    public ICollection<Announcement> Announcements { get; set; }
     
 }
