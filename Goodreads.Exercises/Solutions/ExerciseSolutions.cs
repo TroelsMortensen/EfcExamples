@@ -62,10 +62,10 @@ public class ExerciseSolutions : Exercises
     [Test]
     public override void Ex5()
     {
-        // context.Authors.GroupBy(a => a.FirstName).Select(authors => authors.)
+        
         var list = context.Authors // access authors
             .GroupBy(a => a.FirstName) // group by the first name
-            .Select(g => new { GroupId = g.Key, Count = g.Count() }) // select first name and count(*)
+            .Select(g => new { FirstName = g.Key, Count = g.Count() }) // select first name and count(*)
             .Where(arg => arg.Count > 1) // having count(*) > 1
             .OrderByDescending(arg => arg.Count) // order by count(*) desc
             .ToList();

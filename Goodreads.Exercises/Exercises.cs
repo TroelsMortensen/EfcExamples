@@ -319,10 +319,34 @@ public class Exercises
     [Test]
     public virtual void Ex49()
     {
+        var result = context.Genres
+            .Include(genre => genre.DescribedBooks)
+            .Select(genre => new
+            {
+                Genre = genre.GenreName,
+                BookCount = genre.DescribedBooks.Count
+            })
+            .OrderByDescending(arg => arg.BookCount)
+            .ToList();
+        
+        TablePrinter.Print(result);
     }
 
     [Test]
     public virtual void Ex50()
     {
+        var result = context.Books
+            .GroupBy(book => book.YearPublished)
+            .Select(books => new
+            {
+                Year = books.Key,
+                Count = books.Count()
+            })
+            .Where(arg => arg.Year != null)
+            .OrderBy(arg => arg.Year)
+            .ToList();
+        
+        TablePrinter.Print(result);
+
     }
 }

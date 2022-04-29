@@ -38,6 +38,8 @@ public class GoodreadsContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        
+        
         SetupAnnouncements(modelBuilder);
         // SetupAuthor(modelBuilder);
         SetupBook(modelBuilder);
@@ -84,7 +86,13 @@ public class GoodreadsContext : DbContext
     {
         // Defining composite primary key. This can be done with Data Annotation attributes too.
 
-        modelBuilder.Entity<CurrentlyReading>().HasKey(x => new { x.BookId, x.ProfileName });
+        modelBuilder.Entity<CurrentlyReading>()
+            .HasKey(x => new
+                {
+                    x.BookId,
+                    x.ProfileName
+                }
+            );
     }
 
     private void SetupCity(ModelBuilder modelBuilder)
