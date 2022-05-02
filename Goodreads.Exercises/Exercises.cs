@@ -335,6 +335,7 @@ public class Exercises
     [Test]
     public virtual void Ex50()
     {
+        // this is just an example
         var result = context.Books
             .GroupBy(book => book.YearPublished)
             .Select(books => new

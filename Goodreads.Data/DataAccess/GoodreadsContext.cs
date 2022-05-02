@@ -41,12 +41,9 @@ public class GoodreadsContext : DbContext
         
         
         SetupAnnouncements(modelBuilder);
-        // SetupAuthor(modelBuilder);
         SetupBook(modelBuilder);
         SetupCity(modelBuilder);
         SetupCurrentlyReading(modelBuilder);
-        // SetupGenre(modelBuilder);
-        // SetupProfile(modelBuilder);
         SetupPublisher(modelBuilder);
         SetupWantsToRead(modelBuilder);
         SetupBooksRead(modelBuilder);
